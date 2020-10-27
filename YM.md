@@ -6,4 +6,4 @@
 
 This repository addresses the topic of yield mapping. It provides spatial data and a R script for grain yield mapping. 
 
-![Image description](Cover.jpg)
+![Image description](Cover.YM.jpg)
