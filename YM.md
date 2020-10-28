@@ -28,3 +28,7 @@ Grain flow can be measured both in terms of mass or volume flow. For the specifi
 ```{r}
 Mg [kg] = V [cm3/s] * mv [kg/L]
 ```
+
+Volume flow is measured by a paddle wheel flow sensor which consists of multiple wheels. These rotate while grain accumulates as measured by a level sensor. The volume flow is quantified as the number of rotations per unit of time times the volume of the paddle wheel. 
+
+![Image description](Fendt.jpg)
