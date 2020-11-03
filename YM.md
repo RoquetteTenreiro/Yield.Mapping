@@ -26,7 +26,7 @@ Several approaches have been developed for continuous yield sensing. The commerc
 Grain flow can be measured both in terms of mass or volume flow. For the specific case of raw values collected by the harvester Fendt PLI C 5275, which we use, and for data extracted with the 'New Holland' Precision Land Manager (PLM) software, both variables can be accessed. In this particular example, we use volume data as the grain flow variable. Volume flow (V) is expressed in cubic centimeters per second. To convert volume into absolute gain mass (Mg), we use a factor based on grain density (mv) or volumetric weigth (expressed in kg per Liter). This is a probable source of error, that can propage into final yield estimates, which must be taken into account. 
 
 ```{r}
-Mg [kg] = V [cm3/s] * mv [kg/L]
+Mg [kg/s] = V [cm3/s] * mv [kg/L] / 1000 
 ```
 
 Volume flow is measured by a paddle wheel flow sensor which consists of multiple wheels. These rotate while grain accumulates as measured by a level sensor. The volume flow is quantified as the number of rotations per unit of time times the volume of the paddle wheel. 
