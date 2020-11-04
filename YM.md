@@ -83,3 +83,7 @@ Mg [kg] = V [cm3] * mv [kg/L] / 1000
 
 Y [Mg/ha] = 10 * ( Mg [kg] * MF ) / area [m2]
 ```
+
+## 2. Identification and correction of process errors
+
+### 2.1. The error sources
