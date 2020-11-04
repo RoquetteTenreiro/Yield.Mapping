@@ -42,7 +42,15 @@ Once estimated grain mass, a moisture correction factor (MF) is applied to the c
 ```{r}
 MF = (100 - Moisture [%])/100
 ```
-The harvested mass takes some time to move from the head of the combine to the yield sensor. This period is called the “time delay” or the “lag time", which is non-linear. During the time delay, multiple processes of conveying, threshing, separation, and cleaning take place. Two different factors determine this aspect:
+The harvested mass takes some time to move from the head of the combine to the yield sensor. This period is called the “time delay” or the “lag time", which is non-linear. During the time delay, multiple processes of conveying, threshing, separation, and cleaning take place. Many authors have dedicated attention to this particular issue, examples are Searcy et al. (1989), Lark et al. (1997), Birrell et al. (1996). For simplification we assume a flow model that uses a constant value of grain transportation time delay. The grain entering the combine is considered to move at a constant rate, without disturbance, until the sensor plate. The grain flow volume is therefore matched to position data in order to determine actual coordinates of yield. 
+
+- Birrell, S. J., Sudduth, K. A., & Borgelt, S. C. (1996). Comparison of sensors and techniques for crop yield mapping. Computers and Electronics in agriculture, 14(2-3), 215-233.
+
+- Lark, R. M., Stafford, J. V., & Bolam, H. C. (1997). Limitations on the spatial resolution of yield mapping for combinable crops. Journal of Agricultural Engineering Research, 66(3), 183-193.
+
+- Searcy, S. W., Schueller, J. K., Bae, Y. H., Borgelt, S. C., & Stout, B. A. (1989). Mapping of spatially variable yield during grain combining. Transactions of the ASAE, 32(3), 826-0829.
+
+Two different factors determine this aspect:
 
 1) The machine head cutting width (expressed in meters).
 
