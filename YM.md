@@ -61,7 +61,7 @@ Each polygon has a different area but constant width (corresponding to the machi
 ```{r}
 d [m] = area [m2] / width [m]
 
-t [s] = speed [m/s] / d [m]
+t [s] = d [m] / speed [m/s] 
 ```
 
 Reitz and Kutzbach. (1996) proposed an equation to calculate yield from the previous components (i.e. grain volume flow, the moisture factor, the polygon shape area and the driving length duration). The equation can be synthesized as following:
