@@ -103,4 +103,10 @@ An absolutely accurate yield map may be a false promise as multiple sources of e
 
 ![Image description](Machine.jpg)
 
-Small variations of grain volumetric mass or moisture content, mostly among different fields, may requiere further adjustments. This may be done by using mean yield or total yield for a known area as input for validation. Operator errors consist for instance of unadequate speed, leading to under-intake of grain in situations of overspeed, or wrong cutting height level.
+Small variations of grain volumetric mass or moisture content, mostly common among different fields, may requiere further adjustments. This may be done by assessing the mean yield, or the total yield for a known area, as input material for validation. Operator errors consist for instance of unadequate driving speed, leading to underintake of grain in situations of overspeed, or a wrong cutting height level. The calibration of variable input parameters can be done through evaluation of yield map accuracy at point level as well. However this requires manual sampled yield data. The calibration of the flow sensor is probably one of the most important sources of error in yield monitors. Blackmore & Marshall. (2003) indicated that the cutting width factor may be reduced on about 5% due to partial emptiness of the header during the cutting operation. 
+
+- Blackmore, B., & Marshall, C. (2003, February). Yield mapping; errors and algorithms. In Proc. 3rd Int. Conf. Precis. Agric., ed. by PC Robert, RM Rust, WE Larsen (ASA CSSA SSSA, Madison 1996) p (Vol. 403).
+
+
+
+
