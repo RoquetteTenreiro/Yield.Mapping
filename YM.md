@@ -50,7 +50,7 @@ The harvested mass takes some time to move from the head of the combine to the y
 
 - Searcy, S. W., Schueller, J. K., Bae, Y. H., Borgelt, S. C., & Stout, B. A. (1989). Mapping of spatially variable yield during grain combining. Transactions of the ASAE, 32(3), 826-0829.
 
-Two different factors determine this aspect:
+The actual coordinates of yield are considered as the centroid of the respective shape polygon being considered. Two different factors determine this aspect:
 
 1) The machine head cutting width (expressed in meters).
 
