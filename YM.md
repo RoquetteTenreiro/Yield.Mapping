@@ -101,4 +101,6 @@ An absolutly accurate yield map may be a false promise as multiple sources of er
 
 - Thylen, L., Jurschik, P. and Murphy, D. P. L. 1997. Improving the quality of yield data. In: First European Conference on  Precision  Agriculture, Vol.II:  Technology, IT and Management, edited by J. V. Stafford(UK), p. 743–750.
 
+![Image description](Machine.jpg)
+
 Small variations of grain volumetric mass or moisture content, mostly among different fields, may requiere further adjustments. This may be done by using mean yield or total yield for a known area as input for validation. Operator errors consist for instance of unadequate speed, leading to under-intake of grain in situations of overspeed, or wrong cutting height level.
