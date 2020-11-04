@@ -185,7 +185,7 @@ setwd ("C:/Users/Tomas R. Tenreiro/Desktop/La Reina - Datos/Trigo/ShapeFiles/202
 Field <- st_read("Yield.36.shp")
 ```
 
-Yield components are calculated and yield is estimated according to a simplification of the Reitz and Kutzbach. (1996)' equation. The Wheat Volumetric Mass (WVM) corresponds to the grain density mv previously introduced and the Cutting Width Factor is set. In this case we use the value set for the harvester Fendt PLI C 5275. 
+Yield components are calculated and yield is estimated according to a simplification of the Reitz and Kutzbach. (1996)' equation. The Wheat Volumetric Mass (WVM) corresponds to the grain density (mv) previously introduced and the Cutting Width Factor is set. In this case we use the value set for the harvester Fendt PLI C 5275. 
 
 ```{r}
 # Wheat Volumetric Mass (kg/L)
