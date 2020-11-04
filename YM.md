@@ -87,3 +87,18 @@ Y [Mg/ha] = 10 * ( Mg [kg] * MF ) / area [m2]
 ## 2. Identification and correction of process errors
 
 ### 2.1. The error sources
+
+An absolutly accurate yield map may be a false promise as multiple sources of error exist within this process. One of the most important issues is trying to opperate under known levels of error and stable over space. Many possible sources of error can be considered:
+
+1) grain volumetric mass;
+2) grain moisture content;
+3) sensing errors;
+4) operator errors;
+5) partial lack of data points and other types of mapping errors;
+6) unstable and large time-delay;
+7) unkown crop cutting width;
+8) inherent errors from GPS;
+
+- Thylen, L., Jurschik, P. and Murphy, D. P. L. 1997. Improving the quality of yield data. In: First European Conference on  Precision  Agriculture, Vol.II:  Technology, IT and Management, edited by J. V. Stafford(UK), p. 743–750.
+
+Small variations of grain volumetric mass or moisture content, mostly among different fields, may requiere further adjustments. This may be done by using mean yield or total yield for a known area as input for validation. Operator errors consist for instance of unadequate speed, leading to under-intake of grain in situations of overspeed, or wrong cutting height level.
