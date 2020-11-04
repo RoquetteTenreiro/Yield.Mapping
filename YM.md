@@ -171,6 +171,7 @@ library(lmtest)
 library(gstat)
 library("ggpubr")
 ```
+
 Main shapes are uploaded, these include a specific polygon shapefile of the considered plot harvested data (in this case we will work on "field 36" data) and the general shapefiles with all plot boundaries to be included in our analysis. 
 
 ```{r}
@@ -183,6 +184,8 @@ Plots <- st_read("Parcelas.shp")
 setwd ("C:/Users/Tomas R. Tenreiro/Desktop/La Reina - Datos/Trigo/ShapeFiles/2020")
 Field <- st_read("Yield.36.shp")
 ```
+
+Yield components are calculated and yield is estimated according to a simplification of the Reitz and Kutzbach. (1996)' equation. The Wheat Volumetric Mass (WVM) corresponds to the grain density mv previously introduced and the Cutting Width Factor is set. In this case we use the value set for the harvester Fendt PLI C 5275. 
 
 ```{r}
 # Wheat Volumetric Mass (kg/L)
@@ -200,7 +203,9 @@ Field$Duration              <- Field$Distance / Field$Speed
 
 # Yield Estimation (Mg/ha)
 Field$Yield  <- (Field$Mass * Field$Moisture.correction * 10) / Field$Area
+```
 
+```{r}
 # Identify outliers
 x <- quantile(Field$Yield, c(.95))
 Field$Yield[Field$Yield>x]  <- 0
