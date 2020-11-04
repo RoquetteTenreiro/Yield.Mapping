@@ -77,7 +77,7 @@ Y [Mg/ha] = 10 * Y [kg/m2]
 If the PLM extraction delivers grain volume in terms of mass (expressed solely in kg), the duration term can be removed from the equation of Reitz and Kutzbach. (1996), being simplified as following: 
 
 ```{r}
-V corresponds to the mean volume measured with a constant time-step
+V corresponds to the sum of volume measured within the same shape at a constant time-step
 
 Mg [kg] = V [cm3] * mv [kg/L] / 1000 
 
