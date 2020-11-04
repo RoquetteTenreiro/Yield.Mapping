@@ -48,7 +48,7 @@ The harvested mass takes some time to move from the head of the combine to the y
 
 2) The machine driving speed (expressed in meters per second). 
 
-The shapefiles extracted with the PLM software consist of multiple polygon shapes, which are georeferred and spatially separated. Each polygon has a different area but equal width (corresponding to the machine head cuttting width). Each shape is mathematically represented by a vector of numeric attributes (e.g. mean driving speed, grain moisture content, grain volume flow). For each shape, the  lenght distance (d) and the duration of length driving speed (t) are respectivelly estimated as:
+The shapefiles extracted with the PLM software consist of multiple polygon shapes, which are georeferred and spatially separated. Each polygon has a different area but constant width (corresponding to the machine head cuttting width, expressed in meters). Each shape is mathematically represented by a vector of numeric attributes (e.g. mean driving speed, grain moisture content, grain volume flow). For each shape, the  lenght distance (d) and the duration of length driving speed (t) are respectivelly estimated as:
 
 ```{r}
 d [m] = area [m2] / width [m]
