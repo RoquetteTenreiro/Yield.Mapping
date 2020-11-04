@@ -116,5 +116,127 @@ The calibration of variable input parameters can be done through evaluation of y
 
 ## 3. The R-script for mapping grain yield
 
+The first step consists on installing all necessary libraries for this analysis and setting up the working directory. In this section we set initial details to specify the working directory; in this particular case the analysis was linked to the internal folder "La Reina - Datos" where input and output data is saved. To run this code please specify the working directory where your input files are saved.
 
+```{r}
+install.packages("rmarkdown")
+install.packages("dplyr")
+install.packages("plyr")
+install.packages("reshape2")
+install.packages("agricolae")
+install.packages("quantreg")
+install.packages("ploty")
+install.packages("sf")
+install.packages("raster")
+install.packages("spData")
+install.packages('spDataLarge', repos='https://nowosad.github.io/drat/', type='source')
+install.packages("gridExtra")
+install.packages("RColorBrewer")
+install.packages("root.dir")
+install.packages("tidyverse")
+install.packages("ggplot2")
+install.packages("wesanderson")
+install.packages("ggpmisc")
+install.packages("knitr")
+install.packages("installr")
+install.packages("lmtest", repos = "http://cran.us.r-project.org")
+install.packages("tinytex")
+install.packages("sm")
+install.packages("randomcoloR")
+install.packages("Lahman")
+
+library(knitr)
+library(sf)
+library(dplyr)  
+library(plyr)
+library(reshape2)
+library(agricolae)
+library(quantreg)
+library(plotly)
+library(sp)
+library(spDataLarge)
+library(spData)
+library(tmap)
+library(raster)
+library(gridExtra)
+library(quantreg)
+library(ggplot2)
+library(RColorBrewer)
+library(gridExtra)
+library(wesanderson)
+library(ggpmisc)
+library(markdown)
+library(tinytex)
+library(lmtest)
+library(gstat)
+library("ggpubr")
+```
+Main shapes are uploaded, these include a specific polygon shapefile of the considered plot harvested data (in this case we will work on "field 36" data) and the general shapefiles with all plot boundaries to be included in our analysis. 
+
+```{r}
+rm(list=ls())
+getwd()
+setwd ("C:/Users/Tomas R. Tenreiro/Desktop/La Reina - Datos")
+SAT.Imagery  <- raster("2020-10-15-00_00_2020-10-15-23_59_Sentinel-2_L2A_True_color.tiff")
+setwd ("C:/Users/Tomas R. Tenreiro/Desktop/La Reina - Datos/Trigo/Vector.Files")
+Plots <- st_read("Parcelas.shp")
+setwd ("C:/Users/Tomas R. Tenreiro/Desktop/La Reina - Datos/Trigo/ShapeFiles/2020")
+Field <- st_read("Yield.36.shp")
+```
+
+```{r}
+# Wheat Volumetric Mass (kg/L)
+WVM = 0.75
+
+# Cutting Width Factor (m)
+CWF = 6.95
+
+# Yield Estimator
+Field$Mass                  <- Field$Volume * (WVM / 1000)
+Field$Moisture.correction   <- (100 - Field$Moisture) / 100
+Field$Area                  <- as.vector(st_area(Field)) 
+Field$Distance              <- Field$Area / CWF
+Field$Duration              <- Field$Distance / Field$Speed 
+
+# Yield Estimation (Mg/ha)
+Field$Yield  <- (Field$Mass * Field$Moisture.correction * 10) / Field$Area
+
+# Identify outliers
+x <- quantile(Field$Yield, c(.95))
+Field$Yield[Field$Yield>x]  <- 0
+x <- quantile(Field$Yield, c(.01))
+Field$Yield[Field$Yield<x]  <- 0
+
+# Get centroids of poligons
+F.dots = st_centroid(Field)
+
+# Remove data outliers (NA)
+F.dots$Yield[F.dots$Yield == 0] <- NA
+F.dots <- F.dots[!is.na(F.dots$Yield), ]
+
+# Yield mapping (centroids without NA's)
+tm_shape(F.dots) + tm_dots(col="Yield", palette = "RdYlGn", n=5, size=0.1)
+
+# Density plot
+P = ecdf(F.dots$Yield)    
+P(0.0)        
+plot(P)
+
+# Correct gaps by IDW interpolation
+r = raster(F.dots, ncol = 100, nrow = 150)
+gs = gstat(formula = Yield~1, locations = F.dots)
+idw = interpolate(r, gs)
+
+# Mask & print yield map
+YM = mask(idw, Plots)
+names(YM)[names(YM) == "var1.pred"] <- "Yield"
+YM <- rasterToPoints(YM, spatial = TRUE) %>% st_as_sf()
+tm_shape(YM) + tm_dots(col = "Yield", palette = "RdYlGn", n=10, size = 0.4)
+
+#setwd ("C:/Users/Tomas R. Tenreiro/Desktop/La Reina - Datos/Yield.Maps")
+#st_write(YM, "YM.36.shp", driver="ESRI Shapefile")  # create to a shapefile 
+
+crs(YM)
+
+```
 
