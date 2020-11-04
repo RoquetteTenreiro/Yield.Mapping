@@ -35,5 +35,9 @@ Volume flow is measured by a paddle wheel flow sensor which consists of multiple
 
 ![Image description](Fendt.Combine.jpg)
 
+Once estimated grain mass, a moisture correction factor is applied to the calculation process. This step gains importance in crops that are harvested with higher levels of moisture content, or in more humid regions. 
 
+```{r}
+MF = (100 - Moisture [%])/100
+```
 
