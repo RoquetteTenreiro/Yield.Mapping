@@ -35,3 +35,5 @@ Volume flow is measured by a paddle wheel flow sensor which consists of multiple
 
 ![Image description](Fendt.Combine.jpg)
 
+
+
