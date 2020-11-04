@@ -1,7 +1,7 @@
 # Yield Mapping 
 R script and calculation procedure for spatial mapping of grain yield
 
-![Image description](Cover.YM.jpg)
+![Image description](CoverYM.jpg)
 
 > Author: Tomás Roquette Tenreiro
 
