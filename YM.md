@@ -88,7 +88,7 @@ Y [Mg/ha] = 10 * ( Mg [kg] * MF ) / area [m2]
 
 ### 2.1. The error sources
 
-An absolutly accurate yield map may be a false promise as multiple sources of error exist within this process. One of the most important issues is trying to opperate under known levels of error and stable over space. Many possible sources of error can be considered:
+An absolutely accurate yield map may be a false promise as multiple sources of error exist within this process. From a data analysis perepective, the objective won't be the achievement of a full absence of error but the understanding of it and its' minimization. Our aim is trying to opperate under known levels of error and stable over space. Many possible sources of error can be considered:
 
 1) grain volumetric mass;
 2) grain moisture content;
