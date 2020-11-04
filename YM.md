@@ -74,7 +74,7 @@ Y [Mg/ha] = 10 * Y [kg/m2]
 
  - Reitz, P., & Kutzbach, H. D. (1996). Investigations on a particular yield mapping system for combine harvesters. Computers and electronics in agriculture, 14(2-3), 137-150.
  
-If the PLM extraction delivers grain volume in terms of mass (expressed solely in kg), the duration term can be removed from the equation of Reitz and Kutzbach. (1996), being simplified as following: 
+If the PLM extraction delivers grain volume in terms of mass, expressed solely in kg, the duration term can be removed from the equation of Reitz and Kutzbach. (1996), being simplified as following: 
 
 ```{r}
 V corresponds to the sum of volume measured within the same shape at a constant time-step
