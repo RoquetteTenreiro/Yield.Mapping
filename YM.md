@@ -64,3 +64,10 @@ d [m] = area [m2] / width [m]
 t [s] = speed [m/s] / d [m]
 ```
 
+Reitz and Kutzbach. (1996) proposed an equation to calculate yield from the previous components (i.e. grain volume flow, the moisture factor, the polygon shape area and the driving length duration). The equation can be synthesized as following:
+
+```{r}
+Y [Mg/ha] = ( Mg [kg/s] * MF * t [s] ) / area [m2]
+```
+
+ - Reitz, P., & Kutzbach, H. D. (1996). Investigations on a particular yield mapping system for combine harvesters. Computers and electronics in agriculture, 14(2-3), 137-150.
