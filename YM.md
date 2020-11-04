@@ -56,6 +56,8 @@ The shapefiles extracted with the PLM software consist of multiple polygon shape
 
 2) The machine driving speed (expressed in meters per second). 
 
+![Image description](Shapes.jpg)
+
 Each polygon has a different area but constant width (corresponding to the machine head cuttting width, expressed in meters). This means that raw data (i.e. the shape centroid) is mapped with constant width spatial resolution but variable length resolution. Each shape is mathematically represented by a vector of numeric attributes (e.g. mean driving speed, grain moisture content, grain volume flow). For each shape, the  lenght distance (d) and the duration of length driving speed (t) are respectivelly estimated as:
 
 ```{r}
