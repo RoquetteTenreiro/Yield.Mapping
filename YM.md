@@ -215,7 +215,7 @@ Field$Duration              <- Field$Distance / Field$Speed
 Field$Yield  <- (Field$Mass * Field$Moisture.correction * 10) / Field$Area
 ```
 
-![Image description](Field.36.FieldTable.jpg
+![Image description](Field.36.FieldTable.jpg)
 
 
 ```{r}
@@ -259,4 +259,4 @@ crs(YM)
 
 ```
 
-![Image description](Field.36.YM.jpg
+![Image description](Field.36.YM.jpg)
