@@ -263,8 +263,8 @@ crs(YM)
 
 The density plot generated is evaluated. We use both mean registered yield and 12 manual samples of yield to validate the parameterization that was followed. The mean measured yield (i.e. observed) of this field was 2.9 (±0.3) Mg/ha, the estimated mean is 3.1 Mg/ha. This seems to be caused by an over estimation (i.e. about 35%) of yield in the least productive zones. 
 
-|Point | Observed (Mg/ha)    | Std. dev      | Estimated (Mg/ha)   | Point | Observed (Mg/ha)    | Std. dev      | Estimated (Mg/ha)   | 
-|------|--------------|---------------|--------------|-------------|-------|---------------------|---------------|---------------------|
+|Point | Observed (Mg/ha)    | Std. dev              | Estimated (Mg/ha)   | Point | Observed (Mg/ha)    | Std. dev      | Estimated (Mg/ha)   | 
+|------|--------------|---------------|--------------|---------------------|-----------------------------|---------------|---------------------|
 | 1    |     1.98     |    0.4        |      2.92    |  7    |     2.66     |    0.2        |      2.90    |
 | 2    |     2.98     |    0.5        |      3.25    |  8    |     3.00     |    0.1        |      3.43    | 
 | 3    |     2.60     |    0.5        |      3.26    |  9    |     3.10     |    0.2        |      3.27    | 
