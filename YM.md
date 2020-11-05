@@ -261,7 +261,22 @@ crs(YM)
 
 ![Image description](Field.36.YM.jpg)
 
-The density plot generated is evaluated. We use both mean registered yield and 12 manual samples of yield to validate the parameterization that was followed.
+The density plot generated is evaluated. We use both mean registered yield and 12 manual samples of yield to validate the parameterization that was followed. The mean measured yield (i.e. observed) of this field was 2.9 (±0.3) Mg/ha, the estimated mean is 3.1 Mg/ha. This seems to be caused by an over estimation (i.e. about 35%) of yield in the least productive zones. 
+
+|Point | Observed     | Std. dev      | Estimated    | 
+|------|--------------|---------------|--------------|
+| 1    |     1.98     |    0.4        |      2.92    |  
+| 2    |     2.98     |    0.5        |      3.25    |   
+| 3    |     2.60     |    0.5        |      3.26    |   
+| 4    |     3.91     |    0.5        |      3.41    |
+| 5    |     2.90     |    0.6        |      3.41    |
+| 6    |     4.17     |    0.2        |      4.13    |
+| 7    |     2.66     |    0.2        |      2.90    |
+| 8    |     3.00     |    0.1        |      3.43    |
+| 9    |     3.10     |    0.2        |      3.27    |
+| 10   |     2.79     |    0.2        |      2.76    |
+| 11   |     3.12     |    0.3        |      3.45    |
+| 12   |     1.41     |    0.8        |      2.22    |
 
 ![Image description](Field.36.Val.jpg)
 
