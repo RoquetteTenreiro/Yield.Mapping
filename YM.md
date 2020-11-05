@@ -215,7 +215,8 @@ Field$Duration              <- Field$Distance / Field$Speed
 Field$Yield  <- (Field$Mass * Field$Moisture.correction * 10) / Field$Area
 ```
 
-![Image description](Field36.YM.jpg
+![Image description](Field.36.FieldTable.jpg
+
 
 ```{r}
 # Identify outliers
@@ -247,6 +248,7 @@ idw = interpolate(r, gs)
 # Mask & print yield map
 YM = mask(idw, Plots)
 names(YM)[names(YM) == "var1.pred"] <- "Yield"
+tm_shape(YM) + tm_raster(col="Yield", palette = "RdYlGn", n=5)
 YM <- rasterToPoints(YM, spatial = TRUE) %>% st_as_sf()
 tm_shape(YM) + tm_dots(col = "Yield", palette = "RdYlGn", n=10, size = 0.4)
 
@@ -257,3 +259,4 @@ crs(YM)
 
 ```
 
+![Image description](Field.36.YM.jpg
