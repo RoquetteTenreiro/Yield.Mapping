@@ -114,7 +114,7 @@ The calibration of variable input parameters can be done through evaluation of y
  
 ### 2.2. Error correction
 
-A simple correction algorithm, inspired by Simbahan et al. (2004), was developed. The algorithm selects all points above and below certain quantile thresholds, applied to both defect and excess cases. These thresholds require adjustments that depend on the validation data used (e.g. point-based manual samples, mean yield records or total yield over a known area registered). The algorithm rejects all dots selected, turning them into NULL data points. A raterize function (i.e. vector to raster) is applied to the centroids of the input polygon shapes. A 5x5 m spatial resolution rater is produced and an 'Inverse Distance Weight' (IDW) interpolation technique is run to cover empty spots with interpolated data. The 'mask function' is used to filter all pixels inside the boundaries of the corresponding field of interest and the spatial information is poligonized back to point based data in order to map the final outcome as a shapefile.  
+A simple correction algorithm, inspired by Simbahan et al. (2004), was developed. The algorithm selects all points above and below certain quantile thresholds, applied to both defect and excess cases. These thresholds require adjustments that depend on the validation data used (e.g. point-based manual samples, mean yield records or total yield over a known area registered). The algorithm rejects all dots selected, turning them into NULL data points. A raterize function (i.e. vector to raster) is applied to the centroids of the input polygon shapes. A 5x5 m spatial resolution rater is produced and an 'Inverse Distance Weight' (IDW) interpolation technique is run to cover empty spots with interpolated data. The 'mask function' is then used to filter all pixels inside the boundaries of the corresponding field of interest and the spatial information is poligonized back to point based data in order to map the final outcome as a shapefile.  
 
 - Simbahan, G. C., Dobermann, A. and Ping, J. L. 2004. Screening yield monitor data improves grain yieldmaps. Agronomy Journal96, 1091–1102.
 
@@ -178,7 +178,7 @@ library(gstat)
 library("ggpubr")
 ```
 
-Main shapes are uploaded, these include a specific polygon shapefile of the considered plot harvested data (in this case we will work on "field 36" data) and the general shapefiles with all plot boundaries to be included in our analysis. 
+Main shapes are uploaded, these include a specific polygon shapefile with the considered plot harvested data (in this case we will work with "field 36" data) and the general shapefiles with the georeferenced boundaries of all plots to be included in our analysis. 
 
 ```{r}
 rm(list=ls())
@@ -191,7 +191,7 @@ setwd ("C:/Users/Tomas R. Tenreiro/Desktop/La Reina - Datos/Trigo/ShapeFiles/202
 Field <- st_read("Yield.36.shp")
 ```
 
-Yield components are calculated and yield is estimated according to a simplification of the Reitz and Kutzbach. (1996)' equation. The Wheat Volumetric Mass (WVM) corresponds to the grain density (mv) previously introduced. The Cutting Width Factor (CWF) is set, in this case we use the head width of the harvester Fendt PLI C 5275. 
+The yield components are calculated and yield is estimated according to a simplification of the Reitz and Kutzbach. (1996)' equation. The Wheat Volumetric Mass (WVM) corresponds to the grain density (mv) previously introduced. The Cutting Width Factor (CWF) is set, in this case we use the head width of the harvester Fendt PLI C 5275. 
 
 ```{r}
 # Wheat Volumetric Mass (kg/L)
