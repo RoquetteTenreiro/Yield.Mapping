@@ -124,6 +124,8 @@ A simple correction algorithm, inspired by Simbahan et al. (2004) and Ping & Dob
 
 ## 3. The R-script for mapping grain yield
 
+### 3.1. The script
+
 The first step consists on installing all necessary libraries for this analysis and setting up the working directory. In this section we set initial details to specify the working directory; in this particular case the analysis was linked to the internal folder "La Reina - Datos" where input and output data is saved. To run this code please specify the working directory where your input files are saved.
 
 ```{r}
@@ -261,6 +263,8 @@ crs(YM)
 
 ![Image description](Field.36.YM.jpg)
 
+### 3.2. The validation set
+
 The density plot generated is evaluated. We use both mean registered yield and 12 manual samples of yield to validate the parameterization that was followed. The mean measured yield (i.e. observed) of this field was 2.9 (±0.3) Mg/ha, the estimated mean is 3.1 Mg/ha. This seems to be caused by an over estimation (i.e. about 35%) of yield in the least productive zones. 
 
 |Point | Observed (Mg/ha)    | Std. dev              | Estimated (Mg/ha)   | Point | Observed (Mg/ha)    | Std. dev      | Estimated (Mg/ha)   | 
@@ -274,3 +278,183 @@ The density plot generated is evaluated. We use both mean registered yield and 1
 
 ![Image description](Field.36.Val.jpg)
 
+### 3.3. An additional example
+
+Let's apply the R-code to a different crop field for three different years of data. We select the field 'caracol' to map grain yield for 2016, 2018 and 2020. The harvest extracted data are saved in shapefiles named as "Field.12", Field.17", "Field.38", respectively.
+
+```{r}
+
+# Plot 12
+setwd ("C:/Users/Tomas R. Tenreiro/Desktop/La Reina - Datos/Trigo/Vector.Files")
+Plots <- st_read("Parcelas.shp")
+setwd ("C:/Users/Tomas R. Tenreiro/Desktop/La Reina - Datos/Trigo/ShapeFiles/2016")
+Field <- st_read("Yield.12.shp")
+
+# Plot id
+idp <- 12
+
+# Wheat Volumetric Mass (kg/L)
+WVM = 0.75
+
+# Cutting Width Factor (m)
+CWF = 6.95
+
+# Yield Estimator
+Field$Mass                  <- Field$Volume * (WVM / 1000)
+Field$Moisture.correction   <- (100 - Field$Moisture) / 100
+Field$Area                  <- as.vector(st_area(Field)) 
+Field$Distance              <- Field$Area / CWF
+Field$Duration              <- Field$Distance / Field$Speed 
+
+# Yield Estimation (Mg/ha)
+Field$Yield  <- (Field$Mass * Field$Moisture.correction * 10) / Field$Area
+
+# Identify outliers
+x <- quantile(Field$Yield, c(.75))
+Field$Yield[Field$Yield>x]  <- 0
+x <- quantile(Field$Yield, c(.01))
+Field$Yield[Field$Yield<x]  <- 0
+
+# Get centroids of poligons
+F.dots = st_centroid(Field)
+
+# Remove data outliers (NA)
+F.dots$Yield[F.dots$Yield == 0] <- NA
+F.dots <- F.dots[!is.na(F.dots$Yield), ]
+
+# Yield mapping (centroids without NA's)
+tm_shape(F.dots) + tm_dots(col="Yield", palette = "RdYlGn", n=5, size=0.1)
+
+# Density plot
+P = ecdf(F.dots$Yield)    
+P(0.0)        
+plot(P)
+
+# Correct gaps by IDW interpolation
+r = raster(F.dots, ncol = 100, nrow = 100)
+gs = gstat(formula = Yield~1, locations = F.dots)
+idw = interpolate(r, gs)
+
+# Mask & print yield map
+Plots <- subset(Plots, id==idp)
+YM = mask(idw, Plots)
+names(YM)[names(YM) == "var1.pred"] <- "Yield"
+YM <- rasterToPoints(YM, spatial = TRUE) %>% st_as_sf()
+tm_shape(YM) + tm_dots(col = "Yield", palette = "RdYlGn", n=8, size = 0.3)
+
+# Plot 17
+setwd ("C:/Users/Tomas R. Tenreiro/Desktop/La Reina - Datos/Trigo/Vector.Files")
+Plots <- st_read("Parcelas.shp")
+setwd ("C:/Users/Tomas R. Tenreiro/Desktop/La Reina - Datos/Trigo/ShapeFiles/2018")
+Field <- st_read("Yield.17.shp")
+
+# Plot id
+idp <- 17
+
+# Wheat Volumetric Mass (kg/L)
+WVM = 0.75
+
+# Cutting Width Factor (m)
+CWF = 6.95
+
+# Yield Estimator
+Field$Mass                  <- Field$Volume * (WVM / 1000)
+Field$Moisture.correction   <- (100 - Field$Raw_moist) / 100
+Field$Area                  <- as.vector(st_area(Field)) 
+Field$Distance              <- Field$Area / CWF
+Field$Duration              <- Field$Distance / Field$Speed 
+
+# Yield Estimation (Mg/ha)
+Field$Yield  <- (Field$Mass * Field$Moisture.correction * 10) / Field$Area
+
+# Identify outliers
+x <- quantile(Field$Yield, c(.7))
+Field$Yield[Field$Yield>x]  <- 0
+x <- quantile(Field$Yield, c(.01))
+Field$Yield[Field$Yield<x]  <- 0
+
+# Get centroids of poligons
+F.dots = st_centroid(Field)
+
+# Remove data outliers (NA)
+F.dots$Yield[F.dots$Yield == 0] <- NA
+F.dots <- F.dots[!is.na(F.dots$Yield), ]
+
+# Yield mapping (centroids without NA's)
+tm_shape(F.dots) + tm_dots(col="Yield", palette = "RdYlGn", n=5, size=0.1)
+
+# Density plot
+P = ecdf(F.dots$Yield)    
+P(0.0)        
+plot(P)
+
+# Correct gaps by IDW interpolation
+r = raster(F.dots, ncol = 100, nrow = 100)
+gs = gstat(formula = Yield~1, locations = F.dots)
+idw = interpolate(r, gs)
+
+# Mask & print yield map
+Plots <- subset(Plots, id==idp)
+YM = mask(idw, Plots)
+names(YM)[names(YM) == "var1.pred"] <- "Yield"
+YM <- rasterToPoints(YM, spatial = TRUE) %>% st_as_sf()
+tm_shape(YM) + tm_dots(col = "Yield", palette = "RdYlGn", n=8, size = 0.3)
+
+# Plot 38
+setwd ("C:/Users/Tomas R. Tenreiro/Desktop/La Reina - Datos/Trigo/Vector.Files")
+Plots <- st_read("Parcelas.shp")
+setwd ("C:/Users/Tomas R. Tenreiro/Desktop/La Reina - Datos/Trigo/ShapeFiles/2020")
+Field <- st_read("Yield.38.shp")
+
+# Plot id
+idp <- 38
+
+# Wheat Volumetric Mass (kg/L)
+WVM = 0.75
+
+# Cutting Width Factor (m)
+CWF = 6.95
+
+# Yield Estimator
+Field$Mass                  <- Field$Volume * (WVM / 1000)
+Field$Moisture.correction   <- (100 - Field$Moisture) / 100
+Field$Area                  <- as.vector(st_area(Field)) 
+Field$Distance              <- Field$Area / CWF
+Field$Duration              <- Field$Distance / Field$Speed 
+
+# Yield Estimation (Mg/ha)
+Field$Yield  <- (Field$Mass * Field$Moisture.correction * 10) / Field$Area
+
+# Identify outliers
+x <- quantile(Field$Yield, c(.75))
+Field$Yield[Field$Yield>x]  <- 0
+x <- quantile(Field$Yield, c(.01))
+Field$Yield[Field$Yield<x]  <- 0
+
+# Get centroids of poligons
+F.dots = st_centroid(Field)
+
+# Remove data outliers (NA)
+F.dots$Yield[F.dots$Yield == 0] <- NA
+F.dots <- F.dots[!is.na(F.dots$Yield), ]
+
+# Yield mapping (centroids without NA's)
+tm_shape(F.dots) + tm_dots(col="Yield", palette = "RdYlGn", n=5, size=0.1)
+
+# Density plot
+P = ecdf(F.dots$Yield)    
+P(0.0)        
+plot(P)
+
+# Correct gaps by IDW interpolation
+r = raster(F.dots, ncol = 100, nrow = 150)
+gs = gstat(formula = Yield~1, locations = F.dots)
+idw = interpolate(r, gs)
+
+# Mask & print yield map
+Plots <- subset(Plots, id==idp)
+YM = mask(idw, Plots)
+names(YM)[names(YM) == "var1.pred"] <- "Yield"
+YM <- rasterToPoints(YM, spatial = TRUE) %>% st_as_sf()
+tm_shape(YM) + tm_dots(col = "Yield", palette = "RdYlGn", n=8, size = 0.4)
+```
