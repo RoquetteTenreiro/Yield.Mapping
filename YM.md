@@ -118,6 +118,8 @@ A simple correction algorithm, inspired by Simbahan et al. (2004), was developed
 
 - Simbahan, G. C., Dobermann, A. and Ping, J. L. 2004. Screening yield monitor data improves grain yieldmaps. Agronomy Journal96, 1091–1102.
 
+![Image description](DiagramYieldMap.jpg)
+
 ## 3. The R-script for mapping grain yield
 
 The first step consists on installing all necessary libraries for this analysis and setting up the working directory. In this section we set initial details to specify the working directory; in this particular case the analysis was linked to the internal folder "La Reina - Datos" where input and output data is saved. To run this code please specify the working directory where your input files are saved.
