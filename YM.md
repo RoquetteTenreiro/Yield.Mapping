@@ -7,7 +7,7 @@ R script and calculation procedure for spatial mapping of grain yield
 
 > Institute for Sustainable Agriculture (IAS-CSIC) - Córdoba, 2020
 
-This repository addresses the topic of yield mapping. It provides a detailed evaluation of yield mapping components, technology, the main calculation process errors, and recomendations for correction, further analysis and interpretation of results. 
+This repository addresses the topic of yield mapping. It provides a detailed introduction to yield mapping components, technology, the main calculation process errors, and recomendations for correction, further analysis and interpretation of results. 
 
 ## 1. Yield mapping components and technology 
 
