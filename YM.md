@@ -459,7 +459,7 @@ YM <- rasterToPoints(YM, spatial = TRUE) %>% st_as_sf()
 tm_shape(YM) + tm_dots(col = "Yield", palette = "RdYlGn", n=8, size = 0.4)
 ```
 
-![Image description](Caracol.jpg)
+![Image description](Caracol.YM.jpg)
 
 ## 4. Additional reading material
 
