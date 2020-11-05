@@ -280,7 +280,7 @@ The density plot generated is evaluated. We use both mean registered yield and 1
 
 ### 3.3. An additional example
 
-Let's apply the R-code to a different crop field for three different years of data. We select the field 'caracol' to map grain yield for 2016, 2018 and 2020. The harvest extracted data are saved in shapefiles named as "Field.12", Field.17", "Field.38", respectively.
+Let's apply the R-code to a different crop field for three different years of data. We select the field 'caracol' to map grain yield for 2016, 2018 and 2020. The harvest extracted data are saved in shapefiles named as "Yield.12.shp", Yield.17.shp", "Yield.38.shp", respectively.
 
 ```{r}
 
