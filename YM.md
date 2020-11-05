@@ -260,3 +260,8 @@ crs(YM)
 ```
 
 ![Image description](Field.36.YM.jpg)
+
+The density plot generated is evaluated. We use both mean registered yield and 12 manual samples of yield to validate the parameterization that was followed.
+
+![Image description](Field.36.Validation.jpg)
+
