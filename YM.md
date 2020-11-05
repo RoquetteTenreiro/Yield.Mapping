@@ -458,3 +458,15 @@ names(YM)[names(YM) == "var1.pred"] <- "Yield"
 YM <- rasterToPoints(YM, spatial = TRUE) %>% st_as_sf()
 tm_shape(YM) + tm_dots(col = "Yield", palette = "RdYlGn", n=8, size = 0.4)
 ```
+
+![Image description](Caracol.jpg)
+
+## 4. Additional reading material
+
+- https://www.datanovia.com/en/blog/top-r-color-palettes-to-know-for-great-data-visualization/
+
+- https://github.com/RoquetteTenreiro/SDAE_R_lecture
+
+- https://geocompr.robinlovelace.net/
+
+- https://www.rspatial.org/index.html
