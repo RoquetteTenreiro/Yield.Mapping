@@ -90,7 +90,7 @@ Y [Mg/ha] = 10 * ( Mg [kg] * MF ) / area [m2]
 
 ### 2.1. The error sources
 
-An absolutely accurate yield map may be a false promise as multiple sources of error exist within this process. From a data analysis perepective, the objective won't be the achievement of a full absence of error but the understanding of it and its' minimization. Our aim is trying to opperate under known levels of error and stable over space. Many possible sources of error can be considered:
+An absolutely accurate yield map may be a false promise as multiple sources of error exist within this process and their complete elimination is unlikely to be achieved. From a data analysis perspective, the objective won't be a full absence of error but its understanding and minimization as far as possible. In practice, the aim is trying to opperate under known levels of error and stable over space. Many possible sources of error must be considered:
 
 1) grain volumetric mass;
 2) grain moisture content;
@@ -114,9 +114,11 @@ The calibration of variable input parameters can be done through evaluation of y
  
 ### 2.2. Error correction
 
-A simple correction algorithm, inspired by Simbahan et al. (2004), was developed. The algorithm selects all points above and below certain quantile thresholds, applied to both defect and excess cases. These thresholds require adjustments that depend on the validation data used (e.g. point-based manual samples, mean yield records or total yield over a known area registered). The algorithm rejects all dots selected, turning them into NULL data points. A raterize function (i.e. vector to raster) is applied to the centroids of the input polygon shapes. A 5x5 m spatial resolution rater is produced and an 'Inverse Distance Weight' (IDW) interpolation technique is run to cover empty spots with interpolated data. The 'mask function' is then used to filter all pixels inside the boundaries of the corresponding field of interest and the spatial information is poligonized back to point based data in order to map the final outcome as a shapefile.  
+A simple correction algorithm, inspired by Simbahan et al. (2004) and Ping & Dobermann. (2005), was developed. The algorithm selects all points above and below certain quantile thresholds, applied to both defect and excess cases. These thresholds require adjustments that depend on the validation data used (e.g. point-based manual samples, mean yield records or total yield over a known area registered). The algorithm rejects all dots selected, turning them into NULL data points. A raterize function (i.e. vector to raster) is applied to the centroids of the input polygon shapes. A 5x5 m spatial resolution rater is produced and an 'Inverse Distance Weight' (IDW) interpolation technique is run to cover empty spots with interpolated data. The 'mask function' is then used to filter all pixels inside the boundaries of the corresponding field of interest and the spatial information is poligonized back to point based data in order to map the final outcome as a shapefile.  
 
 - Simbahan, G. C., Dobermann, A. and Ping, J. L. 2004. Screening yield monitor data improves grain yieldmaps. Agronomy Journal96, 1091–1102.
+
+- Ping, J. L., & Dobermann, A. (2005). Processing of yield map data. Precision Agriculture, 6(2), 193-212.
 
 ![Image description](DiagramYieldMap.jpg)
 
@@ -125,6 +127,7 @@ A simple correction algorithm, inspired by Simbahan et al. (2004), was developed
 The first step consists on installing all necessary libraries for this analysis and setting up the working directory. In this section we set initial details to specify the working directory; in this particular case the analysis was linked to the internal folder "La Reina - Datos" where input and output data is saved. To run this code please specify the working directory where your input files are saved.
 
 ```{r}
+# install libraries
 install.packages("rmarkdown")
 install.packages("dplyr")
 install.packages("plyr")
@@ -151,6 +154,7 @@ install.packages("sm")
 install.packages("randomcoloR")
 install.packages("Lahman")
 
+# Upload libraries
 library(knitr)
 library(sf)
 library(dplyr)  
@@ -211,7 +215,7 @@ Field$Duration              <- Field$Distance / Field$Speed
 Field$Yield  <- (Field$Mass * Field$Moisture.correction * 10) / Field$Area
 ```
 
-
+![Image description](Field36.YM.jpg
 
 ```{r}
 # Identify outliers
