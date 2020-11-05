@@ -310,7 +310,7 @@ Field$Duration              <- Field$Distance / Field$Speed
 Field$Yield  <- (Field$Mass * Field$Moisture.correction * 10) / Field$Area
 
 # Identify outliers
-x <- quantile(Field$Yield, c(.75))
+x <- quantile(Field$Yield, c(.95))
 Field$Yield[Field$Yield>x]  <- 0
 x <- quantile(Field$Yield, c(.01))
 Field$Yield[Field$Yield<x]  <- 0
@@ -368,7 +368,7 @@ Field$Duration              <- Field$Distance / Field$Speed
 Field$Yield  <- (Field$Mass * Field$Moisture.correction * 10) / Field$Area
 
 # Identify outliers
-x <- quantile(Field$Yield, c(.7))
+x <- quantile(Field$Yield, c(.95))
 Field$Yield[Field$Yield>x]  <- 0
 x <- quantile(Field$Yield, c(.01))
 Field$Yield[Field$Yield<x]  <- 0
@@ -426,7 +426,7 @@ Field$Duration              <- Field$Distance / Field$Speed
 Field$Yield  <- (Field$Mass * Field$Moisture.correction * 10) / Field$Area
 
 # Identify outliers
-x <- quantile(Field$Yield, c(.75))
+x <- quantile(Field$Yield, c(.95))
 Field$Yield[Field$Yield>x]  <- 0
 x <- quantile(Field$Yield, c(.01))
 Field$Yield[Field$Yield<x]  <- 0
